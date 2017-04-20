@@ -1,0 +1,12 @@
+[
+  {
+    "_id": "58ebd98375444143ff9b4f9d",
+    "email": "test@example.com",
+    "updated_at": "2017-04-12T11:54:20.269Z",
+    "created_at": "2017-04-12T11:54:20.269Z",
+    "first_name": "Koziołek",
+    "last_name": "Matołek",
+    "password": "pacanow123",
+    "avatar": "https://api.adorable.io/avatars/125/koziolek"
+  }
+]

@@ -1,0 +1,5 @@
+{
+	"undefined": "localhost/testdb",
+	"dev": "localhost/testdb",
+	"prod": "localhost/testdb"
+}

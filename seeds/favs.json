@@ -1,0 +1,39 @@
+[
+  {
+    "_id": "58ebd98375444143ff9b4f9c",
+    "user": "test_user",
+    "email": "test@example.com",
+    "updated_at": "2017-04-12T11:54:20.269Z",
+    "created_at": "2017-04-12T11:54:20.269Z",
+    "favs": [
+      "Pinta",
+      "Country",
+      "Trele morele"
+    ]
+  },
+  {
+    "_id": "58ebf68a07932f2314d38d58",
+    "user": "koziolek_matolek",
+    "email": "example@example.com",
+    "__v": 0,
+    "updated_at": "2017-04-12T11:54:20.269Z",
+    "created_at": "2017-04-12T11:54:20.269Z",
+    "favs": [
+      "Podkowy",
+      "Kowale",
+      "Pacanów",
+      "Trele morele"
+    ]
+  },
+  {
+    "__v": 0,
+    "email": "example@example.com",
+    "user": "koziolek_matolek",
+    "updated_at": "2017-04-12T11:47:57.817Z",
+    "_id": "58ee14155cb2312478e30b0c",
+    "created_at": "2017-04-12T11:47:57.817Z",
+    "favs": [
+      "Coś nowego"
+    ]
+  }
+]
