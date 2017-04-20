@@ -3,8 +3,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import routes from './routes'
 import mongoose from 'mongoose'
-import { R, sampleMiddleware } from './helpers'
-import expressValidator from 'express-validator'
+import { R, responseSchemaMiddleware, logMiddleware } from './helpers'
 import expressValidation from 'express-validation';
 import CONF from './config'
 
@@ -31,10 +30,10 @@ console.log(`HTTP Server running at ${ CONF.server.host }:${ CONF.server.port }/
  */
 let app = express();
 
-
+app.use(logMiddleware);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(sampleMiddleware({options: 'test'}));
+app.use(responseSchemaMiddleware);
 
 /**
  * Prefix for all routes.

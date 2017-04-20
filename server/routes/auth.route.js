@@ -26,13 +26,7 @@ router.post('/', (req, res) => {
 
                 // return the information including token as JSON
 
-                res.status(200).test();
-                //console.log(res.statusCode);
-                res.status(200).json({
-                    success: true,
-                    message: 'Enjoy your token!',
-                    token: token
-                });
+                res.status(200).success(null, { token: token }, { message: 'Enjoy your token!' });
             }
 
         }
