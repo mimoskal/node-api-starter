@@ -14,7 +14,7 @@ router.route('/')
                 return res.send(error);
             }
 
-            return res.json(items);
+            return res.status(200).success(items);
         });
     });
 
@@ -26,7 +26,7 @@ router.route('/')
                 return res.send(error);
             }
 
-            return res.status(201).json(R.success(201, item, 'Object created successfully!'));
+            return res.status(201).success(item, { message: 'Object created successfully!' });
         });
     });
 

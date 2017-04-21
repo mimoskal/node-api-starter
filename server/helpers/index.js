@@ -1,13 +1,9 @@
-import { R } from './responseSchema'
 import authMiddleware from './authMiddleware'
-import logMiddleware from './logMiddleware'
-import sampleMiddleware from './sampleMiddleware'
-import responseSchemaMiddleware from './responseSchemaMiddleware'
+import logMiddleware from './log.middleware'
+import responseSchemaMiddleware from './responseSchema.middleware'
 
 export {
-    R,
     authMiddleware,
     logMiddleware,
-    sampleMiddleware,
     responseSchemaMiddleware
 }

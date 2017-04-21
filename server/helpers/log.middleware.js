@@ -1,6 +1,9 @@
 export default (req, res, next) => {
+    req.startTime = new Date();
+
     let now = new Date();
     let d = `${ leadZero(now.getDate()) }/${ leadZero(now.getMonth() + 1) }/${ now.getFullYear() } ${ leadZero(now.getHours()) }:${ leadZero(now.getMinutes()) }:${ leadZero(now.getSeconds()) }`;
+
     console.log(`Request Received: ${ d }`);
     return next();
 }

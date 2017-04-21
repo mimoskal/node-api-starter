@@ -42,8 +42,14 @@ app.use('/api', routes);
 
 app.use((err, req, res, next) => {
     if (err instanceof expressValidation.ValidationError) {
-        let error = R.validationError(err);
-        return res.status(err.status).json(error);
+        let errors = err.errors.map(error => {
+            return {
+                field: error.field,
+                message: error.messages.join('. ')
+            };
+        });
+
+        return res.status(err.status).error(errors);
     }
 
     console.log(res);
