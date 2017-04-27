@@ -11,8 +11,7 @@ export default (req, res, next) => {
             if (err) {
                 console.log(err.name);
 
-                let error = R.error(401, [{ field: 'token', message: tokenMessages(err.name) }]);
-                return next(error);
+                res.status(401).error([{ message: tokenMessages(err.name)}, { field: 'token' }]);
             } else {
                 // if everything is good, save to request for use in other routes
                 req.decoded = decoded;
@@ -21,8 +20,7 @@ export default (req, res, next) => {
         });
 
     } else {
-        let error = R.error(403, [{ field: 'token', message: tokenMessages('NoTokenError') }]);
-        return next(error);
+        res.status(403).error([{ message: tokenMessages(NoTokenError)}, { field: 'token' }]);
     }
 }
 

@@ -1,0 +1,251 @@
+[
+  {
+    "_id": "5901cd1e3deb8d1f147f73b1",
+    "author": "Albert Einstein",
+    "quote": "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+    "length": 95,
+    "__v": 0,
+    "updated_at": "2017-04-27T10:51:10.125Z",
+    "created_at": "2017-04-27T10:51:10.125Z",
+    "featured": false,
+    "tags": [
+      "universe",
+      "stupidity"
+    ]
+  },
+  {
+    "_id": "5901cd6b3deb8d1f147f73b2",
+    "author": "Marcus Tullius Cicero",
+    "quote": "A room without books is like a body without a soul.",
+    "length": 51,
+    "__v": 0,
+    "updated_at": "2017-04-27T10:52:27.926Z",
+    "created_at": "2017-04-27T10:52:27.926Z",
+    "featured": false,
+    "tags": [
+      "books",
+      "soul"
+    ]
+  },
+  {
+    "_id": "5901cdf9dc523815b0581bb7",
+    "author": "Oscar Wilde",
+    "quote": "Always forgive your enemies; nothing annoys them so much.",
+    "length": 57,
+    "__v": 0,
+    "updated_at": "2017-04-27T10:54:49.586Z",
+    "created_at": "2017-04-27T10:54:49.586Z",
+    "featured": true,
+    "tags": []
+  },
+  {
+    "_id": "5901ce23dc523815b0581bb8",
+    "author": "Oscar Wilde",
+    "quote": "To live is the rarest thing in the world. Most people exist, that is all.",
+    "length": 73,
+    "__v": 0,
+    "updated_at": "2017-04-27T10:55:31.612Z",
+    "created_at": "2017-04-27T10:55:31.612Z",
+    "featured": false,
+    "tags": [
+      "life"
+    ]
+  },
+  {
+    "_id": "5901ce3ddc523815b0581bb9",
+    "author": "Oscar Wilde",
+    "quote": "I am so clever that sometimes I don't understand a single word of what I am saying.",
+    "length": 83,
+    "__v": 0,
+    "updated_at": "2017-04-27T10:55:57.847Z",
+    "created_at": "2017-04-27T10:55:57.847Z",
+    "featured": false,
+    "tags": []
+  },
+  {
+    "_id": "5901ce7adc523815b0581bba",
+    "author": "Marilyn Monroe",
+    "quote": "I believe that everything happens for a reason. People change so that you can learn to let go, things go wrong so that you appreciate them when they're right, you believe lies so you eventually learn to trust no one but yourself, and sometimes good things fall apart so better things can fall together.",
+    "length": 302,
+    "__v": 0,
+    "updated_at": "2017-04-27T10:56:58.214Z",
+    "created_at": "2017-04-27T10:56:58.214Z",
+    "featured": false,
+    "tags": []
+  },
+  {
+    "_id": "5901ceb5dc523815b0581bbb",
+    "author": "André Gide",
+    "quote": "It is better to be hated for what you are than to be loved for what you are not.",
+    "length": 80,
+    "__v": 0,
+    "updated_at": "2017-04-27T10:57:57.107Z",
+    "created_at": "2017-04-27T10:57:57.107Z",
+    "featured": false,
+    "tags": [
+      "truth"
+    ]
+  },
+  {
+    "_id": "5901cededc523815b0581bbc",
+    "author": "Marilyn Monroe",
+    "quote": "Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.",
+    "length": 109,
+    "__v": 0,
+    "updated_at": "2017-04-27T10:58:38.297Z",
+    "created_at": "2017-04-27T10:58:38.297Z",
+    "featured": false,
+    "tags": []
+  },
+  {
+    "_id": "5901cf2edc523815b0581bbd",
+    "author": "Albert Einstein",
+    "quote": "There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.",
+    "length": 129,
+    "__v": 0,
+    "updated_at": "2017-04-27T10:59:58.986Z",
+    "created_at": "2017-04-27T10:59:58.986Z",
+    "featured": false,
+    "tags": [
+      "life",
+      "miracle"
+    ]
+  },
+  {
+    "_id": "5901cf52dc523815b0581bbe",
+    "author": "Allen Saunders",
+    "quote": "Life is what happens to us while we are making other plans.",
+    "length": 59,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:00:34.807Z",
+    "created_at": "2017-04-27T11:00:34.807Z",
+    "featured": false,
+    "tags": [
+      "life"
+    ]
+  },
+  {
+    "_id": "5901cf6adc523815b0581bbf",
+    "author": "Mark Twain",
+    "quote": "Whenever you find yourself on the side of the majority, it is time to reform (or pause and reflect).",
+    "length": 100,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:00:58.868Z",
+    "created_at": "2017-04-27T11:00:58.868Z",
+    "featured": false,
+    "tags": []
+  },
+  {
+    "_id": "5901cfc0dc523815b0581bc0",
+    "author": "Neil Gaiman",
+    "quote": "Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten.",
+    "length": 129,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:02:24.846Z",
+    "created_at": "2017-04-27T11:02:24.846Z",
+    "featured": false,
+    "tags": [
+      "coraline",
+      "dragons",
+      "fairy tales",
+      "books"
+    ]
+  },
+  {
+    "_id": "5901d153d011a72adcd8c316",
+    "author": "Albert Einstein",
+    "quote": "I am enough of an artist to draw freely upon my imagination. Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.",
+    "length": 161,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:09:07.558Z",
+    "created_at": "2017-04-27T11:09:07.558Z",
+    "featured": false,
+    "tags": [
+      "imagination"
+    ]
+  },
+  {
+    "_id": "5901d77958137328a44c1e97",
+    "author": "Dr. Seuss",
+    "quote": "I like nonsense, it wakes up the brain cells. Fantasy is a necessary ingredient in living.",
+    "length": 90,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:09:28.134Z",
+    "created_at": "2017-04-27T11:09:28.134Z",
+    "featured": true,
+    "tags": [
+      "nonsense",
+      "fantasy"
+    ]
+  },
+  {
+    "_id": "5901d7cb58137328a44c1e98",
+    "author": "Linda Grayson",
+    "quote": "There is nothing better than a friend, unless it is a friend with chocolate.",
+    "length": 76,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:09:28.134Z",
+    "created_at": "2017-04-27T11:09:28.134Z",
+    "featured": true,
+    "tags": [
+      "firends",
+      "friendship",
+      "chocolate"
+    ]
+  },
+  {
+    "_id": "5901d84e58137328a44c1e99",
+    "author": "C.S. Lewis",
+    "quote": "Some day you will be old enough to start reading fairy tales again.",
+    "length": 67,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:09:28.134Z",
+    "created_at": "2017-04-27T11:09:28.134Z",
+    "featured": false,
+    "tags": [
+      "fairy tales",
+      "fantasy"
+    ]
+  },
+  {
+    "_id": "5901d87358137328a44c1e9a",
+    "author": "Lewis Carroll",
+    "quote": "It’s no use going back to yesterday, because I was a different person then.",
+    "length": 75,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:09:28.134Z",
+    "created_at": "2017-04-27T11:09:28.134Z",
+    "featured": false,
+    "tags": [
+      "books",
+      "fantasy"
+    ]
+  },
+  {
+    "_id": "5901d8ab58137328a44c1e9b",
+    "author": "Mark Twain",
+    "quote": "The fear of death follows from the fear of life. A man who lives fully is prepared to die at any time.",
+    "length": 102,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:09:28.134Z",
+    "created_at": "2017-04-27T11:09:28.134Z",
+    "featured": false,
+    "tags": [
+      "death",
+      "life"
+    ]
+  },
+  {
+    "_id": "5901d8e458137328a44c1e9c",
+    "author": "Marilyn Monroe",
+    "quote": "It's far better to be unhappy alone than unhappy with someone — so far.",
+    "length": 71,
+    "__v": 0,
+    "updated_at": "2017-04-27T11:09:28.134Z",
+    "created_at": "2017-04-27T11:09:28.134Z",
+    "featured": false,
+    "tags": [
+      "love"
+    ]
+  }
+]
