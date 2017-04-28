@@ -33,7 +33,7 @@ router.route('/')
 /** DELETE **/
 router.route('/:id')
     .delete((req, res) => {
-        let id = req.params.id;
+        let { id } = req.params;
         Favs.remove({ _id: id }, (error, result) => {
             if (error) {
                 return res.send(error);
@@ -41,6 +41,10 @@ router.route('/:id')
 
             return res.json({ message: 'Object deleted successfully!' });
         });
-    });
+    })
+    .get((req, res) => {
+        let { id } = req.params;
+        Favs.findOne({ _id: id }).then();
+    })
 
 export default router;

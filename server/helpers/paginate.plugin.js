@@ -23,7 +23,7 @@ function paginate(q, select, cursor = {}, lean = true) {
         }
     };
 
-    if (q && q.length) {
+    if (q && Object.keys(q).length !== 0) {
         stats.query = q;
     }
 

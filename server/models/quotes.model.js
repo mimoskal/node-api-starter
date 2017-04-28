@@ -5,6 +5,7 @@ import paginate from '../helpers/paginate.plugin'
 mongoose.Promise = global.Promise;
 
 let quotesSchema = new Schema({
+    _id: String,
     author: String,
     quote: String,
     tags: { type: Array, default: [] },
