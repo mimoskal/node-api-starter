@@ -2,18 +2,23 @@ import { Router } from 'express'
 import Quotes from '../models/quotes.model'
 import validate from 'express-validation'
 import paramValidation from '../validation/quotes.schema'
+import querymen from 'querymen'
 
 let router = Router();
 
+let querySchema = {
+    featured: Boolean,
+    sort: '-created_at',
+    limit: 5
+};
+
 /** GET **/
 router.route('/')
-    .get((req, res) => {
-        Quotes.find((error, items) => {
-            if (error) {
-                return res.send(error);
-            }
+    .get(querymen.middleware(querySchema), (req, res) => {
+        let query = req.querymen;
 
-            return res.status(200).success(items);
+        Quotes.paginate(query.query, query.select, query.cursor).then((data) => {
+            return res.status(200).success(data.items, { stats: data.stats }, { querymen: req.querymen });
         });
     });
 

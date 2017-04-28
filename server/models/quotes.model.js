@@ -1,4 +1,8 @@
 import mongoose, { Schema } from 'mongoose'
+import keywords from 'mongoose-keywords'
+import paginate from '../helpers/paginate.plugin'
+
+mongoose.Promise = global.Promise;
 
 let quotesSchema = new Schema({
     author: String,
@@ -9,5 +13,10 @@ let quotesSchema = new Schema({
     created_at: { type: Date, default: Date.now() },
     updated_at: { type: Date, default: Date.now() }
 });
+
+
+quotesSchema.plugin(keywords, { paths: ['author', 'tags'] });
+quotesSchema.plugin(paginate);
+
 
 export default mongoose.model('Quotes', quotesSchema);

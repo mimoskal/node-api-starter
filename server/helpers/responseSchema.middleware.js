@@ -1,7 +1,7 @@
 export default (req, res, next) => {
     res.success = (data, ...params) => {
         let defaults = {
-            code: res.statusCode,
+            code: res.statusCode >= 100 && res.statusCode < 600 ? res.statusCode : 500,
             success: true
         };
 
@@ -24,7 +24,7 @@ export default (req, res, next) => {
 
     res.error = (errors, ...params) => {
         let defaults = {
-            code: res.statusCode,
+            code: res.statusCode >= 100 && res.statusCode < 600 ? res.statusCode : 500,
             error: true
         };
 

@@ -49,11 +49,11 @@ app.use((err, req, res, next) => {
             };
         });
 
-        return res.status(err.status).error(errors);
+        return res.status(err.status || 500).error(errors);
     }
 
-    console.log(res);
-    res.status(err.status).json(err);
+    // console.log(res);
+    res.status(err.status || 500).json(err);
 });
 
 /**
