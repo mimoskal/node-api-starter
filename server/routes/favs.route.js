@@ -8,40 +8,7 @@ let router = Router();
 
 /** GET **/
 router.route('/')
-/**
- * @api {get} /favs List all quotes
- * @apiVersion 0.1.0
- * @apiName NodeApiStarter
- * @apiGroup Favs
- * @apiHeader (Favs) {String} x-access-token Authorization token.
- *
- * @apiSuccess {Number} code Response HTTP code.
- * @apiSuccess {Boolean} success
- * @apiSuccess {Object[]} data List of quotes (Array of Objects).
- * @apiSuccess {String} data._id Object id.
- * @apiSuccess {String} data.author Author name.
- * @apiSuccess {String} data.quote Quote body.
- * @apiSuccess {Number} data.length Quote length.
- * @apiSuccess {Object} stats
- * @apiSuccess {Object} stats.query
 
- * @apiError UserNotFound The id of the User was not found.
- *
- * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
- *     {
-     *       "firstname": "John",
-     *       "lastname": "Doe"
-     *     }
- *
-
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
-     *       "error": "UserNotFound"
-     *     }
- */
     .get((req, res) => {
         Favs.find((error, items) => {
             if (error) {

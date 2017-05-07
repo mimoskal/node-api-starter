@@ -1,36 +1,24 @@
 import { Router } from 'express'
-import Users from '../models/users.model'
-import jwt from 'jsonwebtoken';
-import CONF from '../config'
+import validate from 'express-validation'
+import authCtrl from '../controllers/auth.controller'
+import authValidation from '../validation/auth.validation'
 
 let router = Router();
 
-router.post('/', (req, res) => {
-    Users.findOne({ email: req.body.email }, (err, user) => {
-        if (err) throw err;
-
-        if (!user) {
-            res.json({ success: false, message: 'Authentication failed. User not found.' });
-        } else if (user) {
-            // check if password matches
-            if (user.password != req.body.password) {
-                res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-            } else {
-                // if user is found and password is right
-                // create a token
-                let token = jwt.sign( {
-                    data: user
-                }, CONF.api.secret, {
-                    expiresIn: '24h'
-                });
-
-                // return the information including token as JSON
-
-                res.status(200).success(null, { token: token }, { message: 'Enjoy your token!' });
-            }
-
-        }
-    });
-});
+router.route('/')
+    /**
+     * @api {post} /auth Login
+     * @apiVersion 0.1.0
+     * @apiName PostAuth
+     * @apiGroup Auth
+     *
+     * @apiUse AuthParams
+     *
+     * @apiUse PostAuthSuccess
+     *
+     * @apiUse AuthValidationError
+     * @apiUse AuthLoginError
+     */
+    .post(validate(authValidation.post), authCtrl.login);
 
 export default router;

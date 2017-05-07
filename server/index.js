@@ -49,6 +49,8 @@ app.use((err, req, res, next) => {
             };
         });
 
+        console.log(errors);
+
         return res.status(err.status || 500).error(errors);
     }
 

@@ -1,9 +1,8 @@
 import Router from 'express'
-import Quotes from '../models/quotes.model'
 import validate from 'express-validation'
 import quotesValidation from '../validation/quotes.validation'
 import querymen from 'querymen'
-import quotesCtrl from '../controllers/quotes.controller';
+import quotesCtrl from '../controllers/quotes.controller'
 
 let router = Router();
 
@@ -18,106 +17,86 @@ router.route('/')
     /**
      * @api {get} /quotes List all quotes
      * @apiVersion 0.1.0
-     * @apiName GetQuotes
+     * @apiName GetAllQuotes
      * @apiGroup Quotes
-     * @apiHeader (Quotes) {String} x-access-token Authorization token.
+     * @apiUse HeaderAuth
      *
-     * @apiSuccess {Number} code Response HTTP code.
-     * @apiSuccess {Boolean} success
-     * @apiSuccess {Object[]} data List of quotes (Array of Objects).
-     * @apiSuccess {String} data._id Object id.
-     * @apiSuccess {String} data.author Author name.
-     * @apiSuccess {String} data.quote Quote body.
-     * @apiSuccess {Number} data.length Quote length.
-     * @apiSuccess {Date} data.created_at
-     * @apiSuccess {Date} data.updated_at
-     * @apiSuccess {Boolean} data.featured
-     * @apiSuccess {String[]} data.tags
-     * @apiSuccess {Object} stats
-     * @apiSuccess {Object} stats.query
-     * @apiSuccess {Object} stats.pagination
-     * @apiSuccess {Number} stats.pagination.current_page
-     * @apiSuccess {Number} stats.pagination.last_page
-     * @apiSuccess {Number} stats.pagination.total_count
-     * @apiSuccess {Number} stats.pagination.per_page
-     * @apiSuccess {String} message
-     * @apiSuccess {Number} time_ms
-     * @apiError UserNotFound The id of the User was not found.
+     * @apiUse GetAllQuotesSuccess
+     * @apiUse StatsSuccess
+     * @apiUse GetAllQuotesSuccessExample
      *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "firstname": "John",
-     *       "lastname": "Doe"
-     *     }
-     *
-
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "error": "UserNotFound"
-     *     }
+     * @apiUse AuthError
+     * @apiUse NotFoundError
      */
     .get(querymen.middleware(querySchema), quotesCtrl.getAll)
 
-    /** POST /api/quotes - Create new item */
+    /**
+     * @api {post} /quotes Create new quote
+     * @apiVersion 0.1.0
+     * @apiName PostQuote
+     * @apiGroup Quotes
+     * @apiUse HeaderAuth
+     *
+     * @apiUse QuoteParams
+     *
+     * @apiUse PostQuoteSuccess
+     * @apiUse PostQuoteSuccessExample
+     *
+     * @apiUse AuthError
+     * @apiUse NotFoundError
+     */
     .post(validate(quotesValidation.post), quotesCtrl.create);
 
 router.route('/all')
     .delete(quotesCtrl.removeAll);
 
 router.route('/:quoteId')
-/**
- * @api {get} /quotes/:id Get single item
- * @apiVersion 0.1.0
- * @apiName GetQuote
- * @apiGroup Quotes
- * @apiHeader (Quotes) {String} x-access-token Authorization token.
- *
- * @apiSuccess {Number} code Response HTTP code.
- * @apiSuccess {Boolean} success
- * @apiSuccess {Object[]} data List of quotes (Array of Objects).
- * @apiSuccess {String} data._id Object id.
- * @apiSuccess {String} data.author Author name.
- * @apiSuccess {String} data.quote Quote body.
- * @apiSuccess {Number} data.length Quote length.
- * @apiSuccess {Date} data.created_at
- * @apiSuccess {Date} data.updated_at
- * @apiSuccess {Boolean} data.featured
- * @apiSuccess {String[]} data.tags
- * @apiSuccess {Object} stats
- * @apiSuccess {Object} stats.query
- * @apiSuccess {Object} stats.pagination
- * @apiSuccess {Number} stats.pagination.current_page
- * @apiSuccess {Number} stats.pagination.last_page
- * @apiSuccess {Number} stats.pagination.total_count
- * @apiSuccess {Number} stats.pagination.per_page
- * @apiSuccess {String} message
- * @apiSuccess {Number} time_ms
- * @apiError UserNotFound The id of the User was not found.
- *
- * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
- *     {
-     *       "firstname": "John",
-     *       "lastname": "Doe"
-     *     }
- *
-
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
-     *       "error": "UserNotFound"
-     *     }
- */
+    /**
+     * @api {get} /quotes/:id Get single item
+     * @apiVersion 0.1.0
+     * @apiName GetSingleQuote
+     * @apiGroup Quotes
+     * @apiUse HeaderAuth
+     *
+     * @apiUse GetSingleQuoteSuccess
+     * @apiUse GetSingleQuoteSuccessExample
+     *
+     * @apiUse AuthError
+     * @apiUse NotFoundError
+     */
     .get(quotesCtrl.getOne)
 
-    /** PUT /api/quotes/:id - Update item */
+    /**
+     * @api {put} /quotes/:id Update quote
+     * @apiVersion 0.1.0
+     * @apiName PutSingleQuote
+     * @apiGroup Quotes
+     * @apiUse HeaderAuth
+     *
+     * @apiUse QuoteParams
+     *
+     * @apiUse GetSingleQuoteSuccess
+     * @apiUse GetSingleQuoteSuccessExample
+     *
+     * @apiUse AuthError
+     * @apiUse NotFoundError
+     */
     .put(validate(quotesValidation.put), quotesCtrl.update)
 
-    /** DELETE /api/quotes/:id - Remove item */
+    /**
+     * @api {delete} /quotes/:id Delete quote
+     * @apiVersion 0.1.0
+     * @apiName DeleteQuote
+     * @apiGroup Quotes
+     * @apiUse HeaderAuth
+     *
+     * @apiUse DeleteQuoteSuccess
+     * @apiUse DeleteQuoteSuccessExample
+     *
+     * @apiUse AuthError
+     * @apiUse NotFoundError
+     *
+     */
     .delete(quotesCtrl.remove);
 
 /** Load user when API with userId route parameter is hit */

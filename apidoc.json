@@ -2,5 +2,10 @@
   "name": "NodeApiStarter",
   "version": "0.1.0",
   "description": "Test API Starter",
-  "title": "Custom apiDoc browser title"
+  "title": "Custom apiDoc browser title",
+  "header": {
+
+    "filename": "header.md"
+  }
+
 }

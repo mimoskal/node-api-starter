@@ -1,4 +1,4 @@
-import Quotes from '../models/quotes.model';
+import Quotes from '../models/quotes.model'
 
 /**
  * Load quote and append to req.
@@ -7,13 +7,13 @@ function load(req, res, next, id) {
     Quotes.findById(id)
         .then((quote) => {
             if (!quote) {
-                return res.status(404).error(null, { message: "Object not found" });
+                return res.status(404).error([{ message: "Item not found." }] );
             }
 
             req.quote = quote;
             return next();
         })
-        .catch(error => res.status(404).error([error]));
+        .catch(error => res.status(400).error([error]));
 }
 
 /**

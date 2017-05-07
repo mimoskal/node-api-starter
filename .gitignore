@@ -32,3 +32,6 @@ public
 
 # Ignore database files
 data
+
+# Ignore documentation
+apidoc
