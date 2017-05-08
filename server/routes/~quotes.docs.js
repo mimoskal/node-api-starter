@@ -21,7 +21,6 @@
  * @apiSuccess (200) {Date} data.updated_at
  * @apiSuccess (200) {Boolean} data.featured
  * @apiSuccess (200) {Array[String]} data.tags
- *
  */
 
 /**

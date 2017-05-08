@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken'
 import CONF from '../config'
-import { R } from '../helpers'
 
 export default (req, res, next) => {
     let token = req.body.token || req.query.token || req.headers['x-access-token'];

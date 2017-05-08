@@ -3,7 +3,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import routes from './routes'
 import mongoose from 'mongoose'
-import { R, responseSchemaMiddleware, logMiddleware } from './helpers'
+import { responseSchemaMiddleware, logMiddleware } from './helpers'
 import expressValidation from 'express-validation';
 import CONF from './config'
 

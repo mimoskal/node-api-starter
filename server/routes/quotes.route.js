@@ -47,6 +47,7 @@ router.route('/')
      */
     .post(validate(quotesValidation.post), quotesCtrl.create);
 
+// TEMP Temporary route for removing all items.
 router.route('/all')
     .delete(quotesCtrl.removeAll);
 
