@@ -7,6 +7,8 @@ import { responseSchemaMiddleware, logMiddleware } from './helpers'
 import expressValidation from 'express-validation';
 import CONF from './config'
 
+global.appRoot = __dirname;
+
 /**
  * Connect to database.
  */

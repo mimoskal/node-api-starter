@@ -35,3 +35,7 @@ data
 
 # Ignore documentation
 apidoc
+
+# Ignore uploaded files
+uploads
+server/uploads

@@ -1,13 +1,19 @@
 import mongoose, { Schema } from 'mongoose'
+import paginate from '../helpers/paginate.plugin'
+import uniqueValidator from 'mongoose-unique-validator'
 
 let usersSchema = new Schema({
-    email: String,
-    created_at: { type: Date, default: Date.now() },
-    updated_at: { type: Date, default: Date.now() },
-    fist_name: String,
-    last_name: String,
+    email: { type: String, required: true, unique: true },
+    firstName: String,
+    lastName: String,
     avatar: String,
-    password: String
+    password: { type: String, required: true }
+}, {
+    versionKey: false,
+    timestamps: true
 });
+
+usersSchema.plugin(paginate);
+usersSchema.plugin(uniqueValidator);
 
 export default mongoose.model('Users', usersSchema);

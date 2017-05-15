@@ -190,8 +190,958 @@
   },
   {
     "type": "delete",
+    "url": "/media/:id",
+    "title": "Delete Media",
+    "version": "0.1.0",
+    "name": "DeleteMedia",
+    "group": "Media",
+    "filename": "server/routes/media.route.js",
+    "groupTitle": "Media",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>Authorization token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"code\": 200,\n    \"success\": true,\n    \"message\": \"Object deleted successfully!\",\n    \"time_ms\": 8\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "401": [
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Boolean",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Array[Object]",
+            "optional": false,
+            "field": "errors",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.message",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.field",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ],
+        "404": [
+          {
+            "group": "404",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "Boolean",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "Array[Object]",
+            "optional": false,
+            "field": "errors",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "String",
+            "optional": false,
+            "field": "errors.message",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "String",
+            "optional": false,
+            "field": "errors.field",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "type": "json"
+        },
+        {
+          "title": "404",
+          "content": "{\n    \"code\": 404,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"message\": \"Item not found.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/media",
+    "title": "Get Media Library",
+    "version": "0.1.0",
+    "name": "GetAllMedia",
+    "group": "Media",
+    "filename": "server/routes/media.route.js",
+    "groupTitle": "Media",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>Authorization token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Array[Object]",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "data._id",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": true,
+            "field": "data.title",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "data.url",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Date",
+            "optional": false,
+            "field": "data.created_at",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Date",
+            "optional": false,
+            "field": "data.updated_at",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Object",
+            "optional": false,
+            "field": "stats",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Object",
+            "optional": false,
+            "field": "stats.query",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Object",
+            "optional": false,
+            "field": "stats.pagination",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "stats.pagination.current_page",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "stats.pagination.last_page",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "stats.pagination.total_count",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "stats.pagination.per_page",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"code\": 200,\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"59104a7269205d1d64a38250\",\n            \"title\": \"Placeholder image\",\n            \"url\": \"https:\\\\example.com\\\\api\\\\uploads\\\\imgplaceholder--1494239858226.jpg\",\n            \"updated_at\": \"2017-05-08T10:37:29.945Z\",\n            \"created_at\": \"2017-05-08T10:37:29.945Z\"\n        }\n    ],\n    \"stats\": {\n        \"pagination\": {\n            \"current_page\": 1,\n            \"last_page\": 1,\n            \"total_count\": 7,\n            \"per_page\": 20\n        }\n    },\n    \"message\": \"Object created successfully!\",\n    \"time_ms\": 8\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "401": [
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Boolean",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Array[Object]",
+            "optional": false,
+            "field": "errors",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.message",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.field",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/media/:id",
+    "title": "Get Media",
+    "version": "0.1.0",
+    "name": "GetMedia",
+    "group": "Media",
+    "filename": "server/routes/media.route.js",
+    "groupTitle": "Media",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>Authorization token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "data._id",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": true,
+            "field": "data.title",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "data.url",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Date",
+            "optional": false,
+            "field": "data.created_at",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Date",
+            "optional": false,
+            "field": "data.updated_at",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"code\": 200,\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"59104a7269205d1d64a38250\",\n        \"title\": \"Placeholder image\",\n        \"url\": \"https:\\\\example.com\\\\api\\\\uploads\\\\imgplaceholder--1494239858226.jpg\",\n        \"updated_at\": \"2017-05-08T10:37:29.945Z\",\n        \"created_at\": \"2017-05-08T10:37:29.945Z\"\n    },\n    \"stats\": {\n        \"pagination\": {\n            \"current_page\": 1,\n            \"last_page\": 1,\n            \"total_count\": 7,\n            \"per_page\": 20\n        }\n    },\n    \"message\": \"Object created successfully!\",\n    \"time_ms\": 8\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "401": [
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Boolean",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Array[Object]",
+            "optional": false,
+            "field": "errors",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.message",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.field",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ],
+        "404": [
+          {
+            "group": "404",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "Boolean",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "Array[Object]",
+            "optional": false,
+            "field": "errors",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "String",
+            "optional": false,
+            "field": "errors.message",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "String",
+            "optional": false,
+            "field": "errors.field",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "type": "json"
+        },
+        {
+          "title": "404",
+          "content": "{\n    \"code\": 404,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"message\": \"Item not found.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/media",
+    "title": "Upload Media",
+    "version": "0.1.0",
+    "name": "PostMedia",
+    "group": "Media",
+    "filename": "server/routes/media.route.js",
+    "groupTitle": "Media",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>Authorization token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Body": [
+          {
+            "group": "Body",
+            "type": "File",
+            "optional": false,
+            "field": "file",
+            "description": ""
+          },
+          {
+            "group": "Body",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "201": [
+          {
+            "group": "201",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "String",
+            "optional": false,
+            "field": "data._id",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "String",
+            "optional": true,
+            "field": "data.title",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "String",
+            "optional": false,
+            "field": "data.url",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Date",
+            "optional": false,
+            "field": "data.created_at",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Date",
+            "optional": false,
+            "field": "data.updated_at",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"code\": 201,\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"59104a7269205d1d64a38250\",\n        \"title\": \"Placeholder image\",\n        \"url\": \"https:\\\\example.com\\\\api\\\\uploads\\\\imgplaceholder--1494239858226.jpg\",\n        \"updated_at\": \"2017-05-08T10:37:29.945Z\",\n        \"created_at\": \"2017-05-08T10:37:29.945Z\"\n    },\n    \"message\": \"Object created successfully!\",\n    \"time_ms\": 8\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "401": [
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Boolean",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Array[Object]",
+            "optional": false,
+            "field": "errors",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.message",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.field",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "put",
+    "url": "/media",
+    "title": "Update Media",
+    "version": "0.1.0",
+    "name": "PutMedia",
+    "group": "Media",
+    "filename": "server/routes/media.route.js",
+    "groupTitle": "Media",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>Authorization token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Body": [
+          {
+            "group": "Body",
+            "type": "File",
+            "optional": false,
+            "field": "file",
+            "description": ""
+          },
+          {
+            "group": "Body",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "201": [
+          {
+            "group": "201",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "String",
+            "optional": false,
+            "field": "data._id",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "String",
+            "optional": true,
+            "field": "data.title",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "String",
+            "optional": false,
+            "field": "data.url",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Date",
+            "optional": false,
+            "field": "data.created_at",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Date",
+            "optional": false,
+            "field": "data.updated_at",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": ""
+          },
+          {
+            "group": "201",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"code\": 201,\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"59104a7269205d1d64a38250\",\n        \"title\": \"Placeholder image\",\n        \"url\": \"https:\\\\example.com\\\\api\\\\uploads\\\\imgplaceholder--1494239858226.jpg\",\n        \"updated_at\": \"2017-05-08T10:37:29.945Z\",\n        \"created_at\": \"2017-05-08T10:37:29.945Z\"\n    },\n    \"message\": \"Object created successfully!\",\n    \"time_ms\": 8\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "401": [
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Boolean",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Array[Object]",
+            "optional": false,
+            "field": "errors",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.message",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "String",
+            "optional": false,
+            "field": "errors.field",
+            "description": ""
+          },
+          {
+            "group": "401",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ms",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
     "url": "/quotes/:id",
-    "title": "Delete quote",
+    "title": "Delete Quote",
     "version": "0.1.0",
     "name": "DeleteQuote",
     "group": "Quotes",
@@ -345,7 +1295,7 @@
       "examples": [
         {
           "title": "401",
-          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Auth token has expired.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
           "type": "json"
         },
         {
@@ -359,7 +1309,7 @@
   {
     "type": "get",
     "url": "/quotes",
-    "title": "List all quotes",
+    "title": "List Quotes",
     "version": "0.1.0",
     "name": "GetAllQuotes",
     "group": "Quotes",
@@ -625,7 +1575,7 @@
       "examples": [
         {
           "title": "401",
-          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Auth token has expired.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
           "type": "json"
         },
         {
@@ -639,7 +1589,7 @@
   {
     "type": "get",
     "url": "/quotes/:id",
-    "title": "Get single item",
+    "title": "Get Quote",
     "version": "0.1.0",
     "name": "GetSingleQuote",
     "group": "Quotes",
@@ -856,7 +1806,7 @@
       "examples": [
         {
           "title": "401",
-          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Auth token has expired.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
           "type": "json"
         },
         {
@@ -870,7 +1820,7 @@
   {
     "type": "post",
     "url": "/quotes",
-    "title": "Create new quote",
+    "title": "Create Quote",
     "version": "0.1.0",
     "name": "PostQuote",
     "group": "Quotes",
@@ -1072,61 +2022,12 @@
             "field": "time_ms",
             "description": ""
           }
-        ],
-        "404": [
-          {
-            "group": "404",
-            "type": "Number",
-            "optional": false,
-            "field": "code",
-            "description": ""
-          },
-          {
-            "group": "404",
-            "type": "Boolean",
-            "optional": false,
-            "field": "error",
-            "description": ""
-          },
-          {
-            "group": "404",
-            "type": "Array[Object]",
-            "optional": false,
-            "field": "errors",
-            "description": ""
-          },
-          {
-            "group": "404",
-            "type": "String",
-            "optional": false,
-            "field": "errors.message",
-            "description": ""
-          },
-          {
-            "group": "404",
-            "type": "String",
-            "optional": false,
-            "field": "errors.field",
-            "description": ""
-          },
-          {
-            "group": "404",
-            "type": "Number",
-            "optional": false,
-            "field": "time_ms",
-            "description": ""
-          }
         ]
       },
       "examples": [
         {
           "title": "401",
-          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Auth token has expired.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
-          "type": "json"
-        },
-        {
-          "title": "404",
-          "content": "{\n    \"code\": 404,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"message\": \"Item not found.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
           "type": "json"
         }
       ]
@@ -1135,7 +2036,7 @@
   {
     "type": "put",
     "url": "/quotes/:id",
-    "title": "Update quote",
+    "title": "Update Quote",
     "version": "0.1.0",
     "name": "PutSingleQuote",
     "group": "Quotes",
@@ -1386,7 +2287,7 @@
       "examples": [
         {
           "title": "401",
-          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Auth token has expired.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
+          "content": "{\n    \"code\": 401,\n    \"error\": true,\n    \"errors\": [\n        {\n            \"field\": \"token\"\n            \"message\": \"Failed to authenticate token.\"\n        }\n    ],\n    \"time_ms\": 10\n}",
           "type": "json"
         },
         {

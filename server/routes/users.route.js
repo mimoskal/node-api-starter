@@ -1,18 +1,25 @@
 import { Router } from 'express'
-import Users from '../models/users.model'
+import querymen from 'querymen'
+import validate from 'express-validation'
+import usersValidation from '../validation/users.validation'
+import usersCtrl from '../controllers/users.controller'
 
 let router = Router();
 
+let querySchema = {
+    sort: '-updatedAt',
+    limit: 20,
+    fields: '-password'
+};
+
 router.route('/')
-    .get((req, res) => {
-        Users.find({}, { password: false }, (error, items) => {
-            if (error) {
-                return res.send(error);
-            }
+    .get(querymen.middleware(querySchema), usersCtrl.getAll)
 
-            return res.json(items);
-        });
-    });
+    .post(validate(usersValidation.post), usersCtrl.create);
 
+router.route('/:userId')
+    .get(usersCtrl.getOne)
+    .put(validate(usersValidation.put), usersCtrl.update)
+    .delete(usersCtrl.remove);
 
 export default router;

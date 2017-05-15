@@ -15,7 +15,7 @@ let querySchema = {
 
 router.route('/')
     /**
-     * @api {get} /quotes List all quotes
+     * @api {get} /quotes List Quotes
      * @apiVersion 0.1.0
      * @apiName GetAllQuotes
      * @apiGroup Quotes
@@ -31,7 +31,7 @@ router.route('/')
     .get(querymen.middleware(querySchema), quotesCtrl.getAll)
 
     /**
-     * @api {post} /quotes Create new quote
+     * @api {post} /quotes Create Quote
      * @apiVersion 0.1.0
      * @apiName PostQuote
      * @apiGroup Quotes
@@ -43,7 +43,6 @@ router.route('/')
      * @apiUse PostQuoteSuccessExample
      *
      * @apiUse AuthError
-     * @apiUse NotFoundError
      */
     .post(validate(quotesValidation.post), quotesCtrl.create);
 
@@ -53,7 +52,7 @@ router.route('/all')
 
 router.route('/:quoteId')
     /**
-     * @api {get} /quotes/:id Get single item
+     * @api {get} /quotes/:id Get Quote
      * @apiVersion 0.1.0
      * @apiName GetSingleQuote
      * @apiGroup Quotes
@@ -68,7 +67,7 @@ router.route('/:quoteId')
     .get(quotesCtrl.getOne)
 
     /**
-     * @api {put} /quotes/:id Update quote
+     * @api {put} /quotes/:id Update Quote
      * @apiVersion 0.1.0
      * @apiName PutSingleQuote
      * @apiGroup Quotes
@@ -85,22 +84,19 @@ router.route('/:quoteId')
     .put(validate(quotesValidation.put), quotesCtrl.update)
 
     /**
-     * @api {delete} /quotes/:id Delete quote
+     * @api {delete} /quotes/:id Delete Quote
      * @apiVersion 0.1.0
      * @apiName DeleteQuote
      * @apiGroup Quotes
      * @apiUse HeaderAuth
      *
-     * @apiUse DeleteQuoteSuccess
-     * @apiUse DeleteQuoteSuccessExample
+     * @apiUse DeleteSuccess
+     * @apiUse DeleteSuccessExample
      *
      * @apiUse AuthError
      * @apiUse NotFoundError
      *
      */
     .delete(quotesCtrl.remove);
-
-/** Load user when API with userId route parameter is hit */
-router.param('quoteId', quotesCtrl.load);
 
 export default router;

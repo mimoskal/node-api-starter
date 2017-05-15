@@ -15,7 +15,7 @@
  *      "errors": [
  *          {
  *              "field": "token"
- *              "message": "Auth token has expired."
+ *              "message": "Failed to authenticate token."
  *          }
  *      ],
  *      "time_ms": 10

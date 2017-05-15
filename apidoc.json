@@ -6,6 +6,9 @@
   "header": {
 
     "filename": "header.md"
+  },
+  "template": {
+    "forceLanguage": "en"
   }
 
 }

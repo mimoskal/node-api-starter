@@ -1,40 +1,93 @@
 import { Router } from 'express'
+import mediaCtrl from '../controllers/media.controller'
 import validate from 'express-validation'
-import multer from 'multer'
+import querymen from 'querymen'
+import mediaValidation from '../validation/media.validation'
 
 let router = Router();
 
-let storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads/')
-    },
-    filename: function (req, file, cb) {
-        let name = file.originalname;
-        let ext = name.match(/\.[^/.]+$/)[0];
-
-        cb(null, name + '--' + Date.now() + ext);
-    }
-});
-
-let upload = multer({ storage: storage }).single('file');
+let querySchema = {
+    sort: '-updated_at',
+    limit: 20
+};
 
 router.route('/')
-    .post((req, res) => {
-        upload(req, res, function(err) {
-            let file = req.file;
-            // req.body will hold the text fields, if there were any
-            if (err) {
-                res.status(500).error([err]);
-            }
+    /**
+     * @api {get} /media Get Media Library
+     * @apiVersion 0.1.0
+     * @apiName GetAllMedia
+     * @apiGroup Media
+     * @apiUse HeaderAuth
+     *
+     * @apiUse GetAllMediaSuccess
+     * @apiUse StatsSuccess
+     * @apiUse GetAllMediaSuccessExample
+     *
+     * @apiUse AuthError
+     */
+    .get(querymen.middleware(querySchema), mediaCtrl.getAll)
 
-            if (!file) {
-                res.status(400).error([{ field: "file", message: "\"file\" is required" }]);
-            }
+    /**
+     * @api {post} /media Upload Media
+     * @apiVersion 0.1.0
+     * @apiName PostMedia
+     * @apiGroup Media
+     * @apiUse HeaderAuth
+     *
+     * @apiUse MediaParams
+     *
+     * @apiUse PostMediaSuccess
+     * @apiUse PostMediaSuccessExample
+     *
+     * @apiUse AuthError
+     */
+    .post(validate(mediaValidation.post), mediaCtrl.upload);
 
-            console.log(err);
-            console.log(req.body);
-            console.log(req.file);
-        })
-    });
+router.route('/:mediaId')
+    /**
+     * @api {get} /media/:id Get Media
+     * @apiVersion 0.1.0
+     * @apiName GetMedia
+     * @apiGroup Media
+     * @apiUse HeaderAuth
+     *
+     * @apiUse GetMediaSuccess
+     * @apiUse GetMediaSuccessExample
+     *
+     * @apiUse AuthError
+     * @apiUse NotFoundError
+     */
+    .get(mediaCtrl.getOne)
+
+    /**
+     * @api {put} /media Update Media
+     * @apiVersion 0.1.0
+     * @apiName PutMedia
+     * @apiGroup Media
+     * @apiUse HeaderAuth
+     *
+     * @apiUse MediaParams
+     *
+     * @apiUse PostMediaSuccess
+     * @apiUse PostMediaSuccessExample
+     *
+     * @apiUse AuthError
+     */
+    .put(validate(mediaValidation.post), mediaCtrl.update)
+
+    /**
+     * @api {delete} /media/:id Delete Media
+     * @apiVersion 0.1.0
+     * @apiName DeleteMedia
+     * @apiGroup Media
+     * @apiUse HeaderAuth
+     *
+     * @apiUse DeleteSuccess
+     * @apiUse DeleteSuccessExample
+     *
+     * @apiUse AuthError
+     * @apiUse NotFoundError
+     */
+    .delete(mediaCtrl.remove);
 
 export default router;

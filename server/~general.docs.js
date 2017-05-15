@@ -16,3 +16,23 @@
  *
  * @apiHeader {String} x-access-token Authorization token.
  */
+
+/**
+ * @apiDefine DeleteSuccess
+ * @apiSuccess (200) {Number} code
+ * @apiSuccess (200) {Boolean} success
+ * @apiSuccess (200) {String} message
+ * @apiSuccess (200) {Number} time_ms
+ */
+
+/**
+ * @apiDefine DeleteSuccessExample
+ *
+ * @apiSuccessExample Success-Response:
+ *      {
+ *          "code": 200,
+ *          "success": true,
+ *          "message": "Object deleted successfully!",
+ *          "time_ms": 8
+ *      }
+ */
