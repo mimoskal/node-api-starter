@@ -34,7 +34,6 @@ public
 data
 
 # Ignore documentation
-apidoc
 
 # Ignore uploaded files
 uploads

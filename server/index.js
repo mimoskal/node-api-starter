@@ -25,7 +25,6 @@ let server = http.createServer((request, response) => {
 server.listen(CONF.server.port, CONF.server.host);
 
 console.log(`HTTP Server running at ${ CONF.server.host }:${ CONF.server.port }/`);
-//console.log(routes);
 
 /**
  * Init express.
@@ -42,7 +41,7 @@ app.use(responseSchemaMiddleware);
  */
 app.use('/api', routes);
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     if (err instanceof expressValidation.ValidationError) {
         let errors = err.errors.map(error => {
             return {
@@ -51,12 +50,9 @@ app.use((err, req, res, next) => {
             };
         });
 
-        console.log(errors);
-
         return res.status(err.status || 500).error(errors);
     }
 
-    // console.log(res);
     res.status(err.status || 500).json(err);
 });
 
