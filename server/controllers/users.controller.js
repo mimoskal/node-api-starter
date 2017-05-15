@@ -33,7 +33,7 @@ function getOne(req, res) {
 /**
  * Create new item.
  */
-function create(req, res) {
+function create(req, res, next) {
     let body = req.body;
     let password = body.password;
 

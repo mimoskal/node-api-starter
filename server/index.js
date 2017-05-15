@@ -41,7 +41,7 @@ app.use(responseSchemaMiddleware);
  */
 app.use('/api', routes);
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     if (err instanceof expressValidation.ValidationError) {
         let errors = err.errors.map(error => {
             return {
